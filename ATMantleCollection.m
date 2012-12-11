@@ -15,6 +15,18 @@
 @implementation ATMantleCollection
 
 @synthesize objects = _objects;
+static NSMutableDictionary* collections = nil;
+
++ (ATMantleCollection *)collectionForName:(NSString *)name
+{
+    if(!collections)
+        collections = [NSMutableDictionary dictionary];
+    
+    if(![collections objectForKey:name])
+        [collections setValue:[[ATMantleCollection alloc] init] forKey:name];
+    
+    return [collections objectForKey:name];
+}
 
 -(id)init
 {

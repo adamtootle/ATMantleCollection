@@ -13,6 +13,8 @@
 
 @property(nonatomic, strong)NSMutableArray *objects;
 
++ (ATMantleCollection *)collectionForName:(NSString *)name;
+
 -(id)initWithObjects:(NSArray *)objects;
 -(void)addObjects:(NSArray *)objects;
 -(void)addObject:(id)object;
