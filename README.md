@@ -1,0 +1,1 @@
+Helper class for hanlding collections of [Mantle](https://github.com/github/Mantle) model object.
