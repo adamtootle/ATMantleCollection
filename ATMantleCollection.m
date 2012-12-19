@@ -8,9 +8,7 @@
 #import "ATMantleCollection.h"
 #import "MTLModel.h"
 
-@interface MTLModelWithId : MTLModel
-@property(nonatomic, assign)NSInteger id;
-@end
+
 
 @implementation ATMantleCollection
 
