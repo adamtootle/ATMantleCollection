@@ -17,7 +17,7 @@
 
 -(id)initWithObjects:(NSArray *)objects;
 -(void)addObjects:(NSArray *)objects;
--(void)addObject:(id)object;
+-(void)addOrUpdateObject:(id)object;
 -(id)findById:(NSInteger)objectId;
 -(NSInteger)count;
 -(id)objectAtIndex:(NSInteger)index;

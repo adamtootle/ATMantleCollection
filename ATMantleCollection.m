@@ -64,12 +64,13 @@ static NSMutableDictionary* collections = nil;
     }
 }
 
-- (void)addObject:(id)object
+-(void)addOrUpdateObject:(id)object;
 {
     NSInteger objectId = [[object performSelector:@selector(id)] integerValue];
-    if([self findById:objectId] != nil)
+    id existingObject = [self findById:objectId];
+    if(existingObject != nil)
     {
-        [_objects setObject:object atIndexedSubscript:[_objects indexOfObject:[self findById:objectId]]];
+        [existingObject mergeValuesForKeysFromModel:object];
     }
     else
     {
