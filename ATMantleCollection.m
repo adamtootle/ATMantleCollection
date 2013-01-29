@@ -51,21 +51,33 @@ static NSMutableDictionary* collections = nil;
     _objects = [NSMutableArray arrayWithArray:objects];
     for(id object in objects)
     {
-        NSInteger objectId = [[object performSelector:@selector(id)] integerValue];
-        if([self findById:objectId] != nil)
+        if(object != nil)
         {
-            NSUInteger index = [_objects indexOfObject:[self findById:objectId]];
-            [_objects setObject:object atIndexedSubscript:index];
+            NSInteger objectId = [[object performSelector:@selector(id)] integerValue];
+            if([self findById:objectId] != nil)
+            {
+                NSUInteger index = [_objects indexOfObject:[self findById:objectId]];
+                [_objects setObject:object atIndexedSubscript:index];
+            }
+            else
+            {
+                [_objects insertObject:object atIndex:([_objects count])];
+            }
         }
         else
         {
-            [_objects insertObject:object atIndex:([_objects count])];
+            NSLog(@"[WARNING] ATMantleCollection - addObjects: cannot add an object that is nil");
         }
     }
 }
 
 -(void)addOrUpdateObject:(id)object;
 {
+    if(object == nil)
+    {
+        NSLog(@"[WARNING] ATMantleCollection - addOrUpdateObject: cannot add an object that is nil");
+        return;
+    }
     NSInteger objectId = [[object performSelector:@selector(id)] integerValue];
     id existingObject = [self findById:objectId];
     if(existingObject != nil)
