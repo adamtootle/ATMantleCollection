@@ -21,5 +21,6 @@
 -(id)findById:(NSInteger)objectId;
 -(NSInteger)count;
 -(id)objectAtIndex:(NSInteger)index;
+-(void)purge;
 
 @end

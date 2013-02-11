@@ -109,4 +109,9 @@ static NSMutableDictionary* collections = nil;
     return [_objects objectAtIndex:index];
 }
 
+- (void)purge
+{
+    self.objects = [NSMutableArray array];
+}
+
 @end
