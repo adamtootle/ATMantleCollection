@@ -19,6 +19,7 @@
 -(void)addObjects:(NSArray *)objects;
 -(void)addOrUpdateObject:(id)object;
 -(id)findById:(NSInteger)objectId;
+-(NSArray*)findByString:(NSString*)value forAttribute:(NSString*)attribute;
 -(NSInteger)count;
 -(id)objectAtIndex:(NSInteger)index;
 -(void)purge;
