@@ -113,6 +113,20 @@ static NSMutableDictionary* collections = nil;
     return [NSArray array];
 }
 
+- (NSArray *)findByValue:(id)value forAttribute:(NSString *)attribute
+{
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [[evaluatedObject valueForKey:attribute] isEqual:value];
+    }];
+    
+    NSArray *existingObjects = [_objects filteredArrayUsingPredicate:predicate];
+    
+    if([existingObjects count] > 0)
+        return existingObjects;
+    
+    return [NSArray array];
+}
+
 - (NSInteger)count
 {
     return [_objects count];
